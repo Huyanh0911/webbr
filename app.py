@@ -17,9 +17,9 @@ def products():
 @app.route('/products/single/<id>')
 def single(id):
     detail_shoes = shoes_collection.find_one({"_id" : ObjectId(id)})
-    allshoes = shoes_collection.find()
+    
     print(detail_shoes)
-    return render_template('single.html',detail_shoes=detail_shoes,allshoes=allshoes)
+    return render_template('single.html',detail_shoes=detail_shoes)
 
 @app.route('/products/filter/<type>')
 def detail8(type):
@@ -30,10 +30,12 @@ def detail8(type):
             shoes_list.append(shoes)
             print(shoes)
     return render_template('filter.html',shoes_list=shoes_list)
-# @app.route('/contact')
-# def contact():
-#     return render_template('infor.html')
-    
+
+@app.route('/products/delete/<id>')
+def delete (id):
+    detail_shoes = shoes_collection.find_one({"_id":ObjectId(id)})
+    detail_shoes= shoes_collection.delete_one(detail_shoes)
+    return render_template('products.html',detail_shoes=detail_shoes)
     
 if __name__ == '__main__':
  app.run(debug=True)

@@ -9,7 +9,7 @@ client = MongoClient(mongo_uri)
 shoesdata = client.db_shoes
 
 shoes_collection = shoesdata["my_data_shoes"]
-
+# Tao csdl
 # for i in range(20):
 #     new_shoes = {
 #         "name":choice(["Nike Kyrie 2","Under Armour Curry 4","Nike Lebron 13","Nike KD 9","Anta KT 4"]),
